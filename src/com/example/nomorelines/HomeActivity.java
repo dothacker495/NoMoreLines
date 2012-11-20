@@ -1,33 +1,69 @@
 package com.example.nomorelines;
 
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
+import com.actionbarsherlock.view.MenuItem.OnMenuItemClickListener;
 
 
-public class HomeActivity extends SherlockActivity {
-
+@SuppressLint("WorldReadableFiles")
+public class HomeActivity extends SherlockActivity{
+private int logged_in;
+private MenuItem menuItem;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setTheme(SampleList.THEME); //Used for theme switching in samples
+        setTheme(R.style.Theme_Sherlock_Light); 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.text);
-        ((TextView)findViewById(R.id.text)).setText("");
+        setContentView(R.layout.home);
+        logged_in=0;
+        
     }
-    @Override
+    
+    
+    
+	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        //Used to put dark icons on light action bar
-        boolean isLight = SampleList.THEME == R.style.Theme_Sherlock_Light;
-
-        menu.add("Search")
-            .setIcon(isLight ? R.drawable.ic_search_inverse : R.drawable.ic_search)
-            .setActionView(R.layout.collapsible_edittext)
-            .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS | MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW);
-
-        return true;
+		 // Inflate your menu.
+		
+	    
+		menu.add("Profile").setOnMenuItemClickListener(new OnMenuItemClickListener() {
+			
+			public boolean onMenuItemClick(MenuItem item) {
+				goShare();
+				return false;
+			}
+		})
+		.setIcon(R.drawable.profile)
+        .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
+		
+		menu.add("Share").setOnMenuItemClickListener(new OnMenuItemClickListener() {
+			
+			public boolean onMenuItemClick(MenuItem item) {
+				goProfile();
+				return false;
+			}
+		})
+		.setIcon(R.drawable.ic_compose_inverse)
+		.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
+		
+        
+		return super.onCreateOptionsMenu(menu);
+     
     }
+	public void goShare(){
+		Toast.makeText(getBaseContext(),"Share", Toast.LENGTH_SHORT).show();
+		
+	}
+	public void goProfile(){
+		Toast.makeText(getBaseContext(),"Profile", Toast.LENGTH_SHORT).show();
+		
+	}
+	
+	
 }
