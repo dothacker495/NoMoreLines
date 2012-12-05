@@ -120,6 +120,6 @@
     <string name="default_value_edittext_preference">Default value</string>
     <string name="app_name">No More Lines</string>
     <string name="title_activity_home">Home</string>
-    <string name="button_fancy">Fancy</string>
+    <string name="button_fancy">Restaurants</string>
     <string name="button_fastfood">Fast</string>
 </resources>
