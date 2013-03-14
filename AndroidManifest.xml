@@ -4,29 +4,122 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="13"
-        android:targetSdkVersion="15" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+        android:maxSdkVersion="16"
+        android:minSdkVersion="10"
+        android:targetSdkVersion="17" />
+
+    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- GCM requires a Google account. -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <!-- Keeps the processor from sleeping when a message is received. -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <!-- Creates a custom permission so only this app can receive its messages. -->
+    <permission
+        android:name="com.example.nomorelines.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.example.nomorelines.permission.C2D_MESSAGE" />
+    <!-- This app has permission to register and receive data message. -->
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <!-- Network State Permissions to detect Internet status -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- Permission to vibrate -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
-        android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:name="com.example.objectClass.MyApplication"
+        android:allowBackup="true"
+        android:hardwareAccelerated="true"
+        android:icon="@drawable/nml"
+        android:label="NoMoreLines"
+        android:theme="@style/Theme.Sherlock.Light.DarkActionBar" >
+        <uses-library android:name="com.google.android.maps" />
+
+        <!-- Broadcast reciever -->
+        <receiver
+            android:name="com.google.android.gcm.GCMBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+
+                <category android:name="com.example.nomorelines" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name="com.example.nomorelines.GCMIntentService" >
+        </service>
+
         <activity
-            android:name=".HomeActivity"
-            android:label="@string/title_activity_home" >
+            android:name="com.example.nomorelines.HomeActivity"
+            android:configChanges="orientation|keyboardHidden" >
+        </activity>
+        <activity
+            android:name=".ProfileActivity"
+            android:configChanges="orientation|keyboardHidden" >
+        </activity>
+        <activity
+            android:name=".ResultActivity"
+            android:configChanges="orientation|keyboardHidden" >
+        </activity>
+        <activity android:name=".DescriptionActivity" >
+        </activity>
+        <activity android:name=".InitialScreenActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="ProfileActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
+        <activity android:name=".FoodListActivity" 
+            android:screenOrientation="portrait">
         </activity>
+        <activity android:name=".DineActivity" 
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".LoginActivity" 
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name="FoodTableActivity" 
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name="FoodTableTabActivity"
+           android:screenOrientation="portrait" >
+        </activity>
+        <activity android:name="ReserveActivity" >
+        </activity>
+        <activity android:name="Register" >
+        </activity>
+        <activity
+            android:name="com.example.nomorelines.ChooseActivity"
+            android:label="Choose Avatar"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Dialog" >
+        </activity>
+        <activity android:name="LocationActivity" >
+        </activity>
+        <activity
+            android:name="TimePickActivity"
+            android:label="Set the Time"
+            android:theme="@android:style/Theme.Dialog" 
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name="DatePickActivity"
+            android:label="Set the Date"
+            android:theme="@android:style/Theme.Dialog" 
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name="ReserveDescriptionActivity"></activity>
+        <activity android:name="com.example.nomorelines.OrderListActivity"></activity>
+        <activity android:name="ViewReservationsActivity"></activity>
     </application>
 
 </manifest>

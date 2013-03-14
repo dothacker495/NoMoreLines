@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bggray" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/setTimeButton"
+            android:layout_width="fill_parent"
+            android:layout_height="62dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="0.22"
+            android:background="@drawable/list_selector2"
+            android:clickable="true"
+            android:orientation="horizontal"
+            android:padding="5dip" >
+
+            <!-- ListRow Left sied Thumbnail image -->
+
+            <TextView
+                android:id="@+id/timeTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="42dp"
+                android:text="Set Time"
+                android:textColor="#040404"
+                android:textSize="15dip"
+                android:textStyle="bold"
+                android:typeface="sans" />
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignRight="@+id/timeSet"
+                android:layout_centerVertical="true"
+                android:contentDescription="@string/hello"
+                android:scaleType="center"
+                android:src="@drawable/arrow_right" />
+
+            <TextView
+                android:id="@+id/timeSet"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/timeTitle"
+                android:layout_below="@+id/imageView1"
+                android:text="No time set"
+                android:textColor="#343434"
+                android:textSize="15sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/setDateButton"
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/list_selector2"
+            android:clickable="true"
+            android:orientation="horizontal"
+            android:padding="5dip" >
+
+            <TextView
+                android:id="@+id/TextView01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="44dp"
+                android:text="Set Date"
+                android:textColor="#040404"
+                android:textSize="15dip"
+                android:textStyle="bold"
+                android:typeface="sans" />
+
+            <ImageView
+                android:id="@+id/ImageView01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignRight="@+id/dateSet"
+                android:layout_below="@+id/TextView01"
+                android:contentDescription="@string/hello"
+                android:scaleType="center"
+                android:src="@drawable/arrow_right" />
+
+            <TextView
+                android:id="@+id/dateSet"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/TextView01"
+                android:layout_below="@+id/ImageView01"
+                android:text="No date set"
+                android:textColor="#343434"
+                android:textSize="15sp" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/reserveButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bgred"
+            android:text="Submit Reservation"
+            android:textColor="#ffffff"
+            android:textColorHint="#ffffff" />
+
+    </LinearLayout>
+	
+</ScrollView>
